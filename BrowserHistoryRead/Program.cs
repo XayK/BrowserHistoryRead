@@ -13,7 +13,9 @@ namespace BrowserHistoryRead
 {
     class Program
     {
-
+        /// <summary>
+        /// Массив представлющие историю браузеоа
+        /// </summary>
         static List<string> urlList;
         static List<string> titlesList;
         static List<int> visitCountList;
