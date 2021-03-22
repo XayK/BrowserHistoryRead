@@ -16,15 +16,29 @@ pathS='Texts'
 counter=0
 import io
 for row in records:
-    #print(row)
-    f = requests.get(row[1])
-    f = f.text
-    f= re.sub('<[^>]*>', '', f)
-    f= re.sub('{[^>]*}', '', f)
-    f= re.sub('\n', ' ', f)
+    #########GETTING TEXT FROM HTML
+    from urllib.request import urlopen
+    from bs4 import BeautifulSoup
+    url = row[1]
+    html = urlopen(url).read()
+    soup = BeautifulSoup(html, features="html.parser")
+    for script in soup(["script", "style"]):
+        script.extract()    # rip it out
+    text = soup.get_text()
+
+    lines = (line.strip() for line in text.splitlines())#разделение текста на строки
+    chunks = (phrase.strip() for line in lines for phrase in line.split("  "))#разделение строк на куски текста
+    text = '\n'.join(chunk for chunk in chunks if (chunk and len(chunk)>15))##добавление строк в text, если фраза длинее 15 символов
+
+    #f = requests.get(row[1])
+    #f = f.text
+    ##f= re.sub('<[^>]*>', '', f)
+    #f= re.sub('{[^>]*}', '', f)
+    #f= re.sub('\n', ' ', f)
+    ###########################
     counter+=1
     fo=io.open(pathS+'/'+str(counter)+'.txt','a',encoding='utf8')
-    fo.write(f)
+    fo.write(text)
     fo.close()
     #Words.append({})
     #for word in f.split():
