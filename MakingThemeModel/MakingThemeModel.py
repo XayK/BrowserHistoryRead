@@ -15,6 +15,7 @@ pathS='Texts'
 #Words=[]
 counter=0
 import io
+
 for row in records:
     #########GETTING TEXT FROM HTML
     from urllib.request import urlopen
@@ -37,7 +38,7 @@ for row in records:
     #f= re.sub('\n', ' ', f)
     ###########################
     counter+=1
-    fo=io.open(pathS+'/'+str(counter)+'.txt','a',encoding='utf8')
+    fo=io.open(pathS+'/'+str(counter)+'.txt','w',encoding='utf8')
     fo.write(text)
     fo.close()
     #Words.append({})
@@ -50,6 +51,31 @@ for row in records:
 
 cursor.close()
 conn.close()
+
+############################################################
+#########Добавление исходного документа в файл##############
+############################################################
+
+from urllib.request import urlopen
+from bs4 import BeautifulSoup
+url = 'https://ru.wikipedia.org/wiki/%D0%91%D0%B0%D0%B7%D0%B0_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85'
+html = urlopen(url).read()
+soup = BeautifulSoup(html, features="html.parser")
+for script in soup(["script", "style"]):
+    script.extract()    # rip it out
+textOriginal = soup.get_text()
+
+lines = (line.strip() for line in text.splitlines())#разделение текста на строки
+chunks = (phrase.strip() for line in lines for phrase in line.split("  "))#разделение строк на куски текста
+textOriginal = '\n'.join(chunk for chunk in chunks if (chunk and len(chunk)>15))##добавление строк в text, если фраза длинее 15 символов
+counter+=1
+fo=io.open(pathS+'/'+str(counter)+'.txt','w',encoding='utf8')
+fo.write(textOriginal)
+fo.close()
+
+#########################
+#########################
+#########################
 
 #лемминга/стемминг
 
@@ -80,8 +106,9 @@ mystem = pymystem3.Mystem()
 
 path='Texts'
 import io
-f=io.open('datas.txt','a',encoding='utf8')
+f=io.open('datas.txt','w',encoding='utf8')
 x=[];y=[]; s=[]
+
 
 for i in range(1,len(os.listdir(path))+1): #перебор файлов с документами по номерам i
       filename=path+'/'+str(i)+".txt"
@@ -136,10 +163,10 @@ import artm
 batch_vectorizer = artm.BatchVectorizer(data_path='datas.txt',# путь к "мешку слов"
                                         data_format='vowpal_wabbit',# формат данных
                                        target_folder='habrahabr', #папка с частотной матрицей из batch
-                                        batch_size=5)# количество документов водном batch
+                                        batch_size=len(os.listdir(path))+1)# количество документов водном batch
 
 dictionary = artm.Dictionary(data_path='habrahabr')# загрузка данных в словарь
-model = artm.ARTM(num_topics=5,
+model = artm.ARTM(num_topics=len(os.listdir(path))+1,
                   num_document_passes=10,#10 проходов по документу
                   dictionary=dictionary,
                   scores=[artm.TopTokensScore(name='top_tokens_score')])
@@ -153,3 +180,42 @@ for topic_name in model.topic_names:
     for (token, weight) in zip(top_tokens.last_tokens[topic_name],
                                top_tokens.last_weights[topic_name]):    
          print (token, '-', round(weight,3))
+
+
+
+
+
+################################################################
+##################Сравнение с исходным документом################
+################################################################
+# пока исходный документ последний
+usefullSites=[]
+for i in range(1,len(model.topic_names)-1):
+    counter=0
+    for (token, weight) in zip(top_tokens.last_tokens[model.topic_names[i]],
+                               top_tokens.last_weights[model.topic_names[i]]):    
+         ####сравнение 
+         for (tokenO, weightO) in zip(top_tokens.last_tokens[model.topic_names[-1]],
+                               top_tokens.last_weights[model.topic_names[-1]]):    
+             if token==tokenO:
+                counter+=1
+    print("coincidence for ",model.topic_names[i]," is ", counter/10, "%")
+    usefullSites.append(counter)
+
+
+#################################################################
+
+
+################################################################
+##################Определение полезных документов################
+################################################################
+conn = psycopg2.connect(dbname='db_urls', user='postgres', 
+                        password='password', host='192.168.56.129')
+cursor = conn.cursor()
+cursor.execute('SELECT id, url,visit_count	FROM public.rawdata')
+records = cursor.fetchall()
+for id in range(len(usefullSites)):
+    if(usefullSites[id]>1 and records[id][2]>1):#хороший сайт если много совпадающий популярных слов и частая посещаемость студентами
+        print(records[id][1], " is usefull site")
+cursor.close()
+conn.close()

@@ -1,0 +1,4 @@
+Log file created at: 2021/03/22 21:45:15
+Running on machine: DESKTOP-C8JSSOH
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W0322 21:45:15.924229  4488 helpers.cc:221] File already exists: habrahabr\aaaaaa.batch
