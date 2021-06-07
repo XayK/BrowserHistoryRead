@@ -9,6 +9,10 @@ Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MakingThemeModel", "MakingT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceForHistoryRead", "ServiceForHistoryRead\ServiceForHistoryRead.csproj", "{70FDB400-B65E-47BB-8E8D-82A12FDB2941}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PreprocessingText", "PreprocessingText\PreprocessingText.pyproj", "{C9608F0D-86AE-4006-970B-A8F5D1CB24A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientForCS", "ClientForCS\ClientForCS.csproj", "{28C15ADC-B6C7-459C-9DDC-8A67CAEEC0E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,12 @@ Global
 		{70FDB400-B65E-47BB-8E8D-82A12FDB2941}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70FDB400-B65E-47BB-8E8D-82A12FDB2941}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70FDB400-B65E-47BB-8E8D-82A12FDB2941}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9608F0D-86AE-4006-970B-A8F5D1CB24A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9608F0D-86AE-4006-970B-A8F5D1CB24A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C15ADC-B6C7-459C-9DDC-8A67CAEEC0E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28C15ADC-B6C7-459C-9DDC-8A67CAEEC0E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28C15ADC-B6C7-459C-9DDC-8A67CAEEC0E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28C15ADC-B6C7-459C-9DDC-8A67CAEEC0E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
