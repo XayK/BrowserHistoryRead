@@ -53,7 +53,7 @@ namespace ClientForCS
                     }///добавляем запрос на анализ
                    var SELcommand = new NpgsqlCommand("Select id_disp from public.discipline Where name_disp= '" + textBox2.Text.ToString() +"'", conn);
                     NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
-
+                    
                     int tmpID = 0; // если дисциплина получаем ее id, иначе 0
                     if(readerSel.Read())
                     {
