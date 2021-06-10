@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowserHistoryRead", "BrowserHistoryRead\BrowserHistoryRead.csproj", "{D2C0C0A1-2779-492A-8670-8B4E1727B5CA}"
-EndProject
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MakingThemeModel", "MakingThemeModel\MakingThemeModel.pyproj", "{B6C0D20F-884F-4DB2-BF9E-C38C6A936AC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceForHistoryRead", "ServiceForHistoryRead\ServiceForHistoryRead.csproj", "{70FDB400-B65E-47BB-8E8D-82A12FDB2941}"
@@ -19,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D2C0C0A1-2779-492A-8670-8B4E1727B5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2C0C0A1-2779-492A-8670-8B4E1727B5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2C0C0A1-2779-492A-8670-8B4E1727B5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2C0C0A1-2779-492A-8670-8B4E1727B5CA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B6C0D20F-884F-4DB2-BF9E-C38C6A936AC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B6C0D20F-884F-4DB2-BF9E-C38C6A936AC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70FDB400-B65E-47BB-8E8D-82A12FDB2941}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
