@@ -145,15 +145,17 @@ namespace ClientForCS
                 {
                     //открытие соединения
                     conn.Open();
-                    var SELcommand = new NpgsqlCommand("SELECT output_usefull.percentage, output_usefull.id_req, cs_rawdata.url" +
-                        " FROM public.output_usefull INNER JOIN public.cs_rawdata" +
-                        " ON output_usefull.id_cs=cs_rawdata.id", conn);
+                    var SELcommand = new NpgsqlCommand("SELECT output_usefull.percentage, discipline.name_disp, cs_rawdata.url" +
+                        " FROM ((public.output_usefull INNER JOIN public.cs_rawdata " +
+                        " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
+                        "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
+                        "ON discipline.id_disp=requests.id_disp", conn);
                     NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
 
                     string answer = "";
                     while(readerSel.Read())
                     {
-                        answer += readerSel[0].ToString() + " " + readerSel[1].ToString() + " " + readerSel[2].ToString();
+                        answer += "Сайт :   "+ readerSel[2].ToString() + "  Процент схожести " + readerSel[0].ToString() + "%    c Д. :"+ readerSel[1].ToString() + "\n";
 
                     }
                     MessageBox.Show(answer);
@@ -191,16 +193,22 @@ namespace ClientForCS
                 {
                     //открытие соединения
                     conn.Open(); ////// отличие от предидущего в том, что здесь в запросе есть WHRERE
-                    var SELcommand = new NpgsqlCommand("SELECT output_usefull.percentage, output_usefull.id_req, cs_rawdata.url " +
-                        "FROM public.output_usefull INNER JOIN public.cs_rawdata " +
-                        "ON output_usefull.id_cs=cs_rawdata.id " +
-                        "WHERE cs_rawdata.visit_count>2 AND output_usefull.percentage>50;", conn);//полпуряные и посещяемые сайты
+                    //var SELcommand = new NpgsqlCommand("SELECT output_usefull.percentage, output_usefull.id_req, cs_rawdata.url " +
+                    //    "FROM public.output_usefull INNER JOIN public.cs_rawdata " +
+                    //    "ON output_usefull.id_cs=cs_rawdata.id " +
+                    //    "WHERE cs_rawdata.visit_count>=1 AND output_usefull.percentage>10;", conn);//полпуряные и посещяемые сайты
+                    var SELcommand = new NpgsqlCommand("SELECT cs_rawdata.url, output_usefull.percentage, cs_rawdata.visit_count" +
+                        " FROM ((public.output_usefull INNER JOIN public.cs_rawdata " +
+                        " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
+                        "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
+                        "ON discipline.id_disp=requests.id_disp " +
+                        "WHERE cs_rawdata.visit_count>=1 AND output_usefull.percentage>=10", conn);
                     NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
 
                     string answer = "";
                     while (readerSel.Read())
                     {
-                       answer += readerSel[0].ToString() + " " + readerSel[1].ToString() + " " + readerSel[2].ToString();
+                       answer += "Популярный сайт : " +readerSel[0].ToString() + " c схожестью " + readerSel[1].ToString() + "% и посещаюмость " + readerSel[2].ToString() +"\n";
                     }
                     MessageBox.Show(answer);
 

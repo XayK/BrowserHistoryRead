@@ -23,6 +23,7 @@ texts=[]
 
 def formatingText(url,id):
     global texts#глобальная переменная
+    path='Texts'
 
     html = urlopen(url).read()
     soup = BeautifulSoup(html, features="html.parser")
