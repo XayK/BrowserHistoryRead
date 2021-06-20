@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,8 +20,45 @@ namespace ClientForCS
             comboBox1.SelectedIndex = 0;
             for(int i =0;i<12;i++)
                 dataGridView1.Rows.Add();
-        }
 
+            LoadDisplines();
+        }
+        public void LoadDisplines()
+        {
+            try
+            {
+                string Host = "192.168.56.129";
+                string User = "postgres";
+                string DBname = "db_urls";
+                string Password = "password";
+                string Port = "5432";
+                string connString =
+                String.Format(
+                       "Server={0};User ID={1};Database={2};Port={3};Password={4};SSLMode=Prefer",
+                       Host, User, DBname, Port, Password);
+                /////////////////////////////
+                using (var conn = new NpgsqlConnection(connString))
+                {
+                    //открытие соединения
+                    conn.Open();
+                    var SELcommand = new NpgsqlCommand("Select name_disp FROM public.discipline ", conn);
+                    NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
+
+                    if (readerSel.Read())
+                    {
+                        comboBox2.Items.Add(readerSel[0].ToString());
+                    }
+
+                    readerSel.Close();
+                    conn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            comboBox2.SelectedIndex=0;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             string original = textBox1.Text;
@@ -47,7 +85,17 @@ namespace ClientForCS
                     using (var command = new NpgsqlCommand("INSERT INTO public.discipline (name_disp, text_of_disp, timeofAdd) VALUES (@nd, @tod,@tadd)", conn))
                     {
                         command.Parameters.AddWithValue("nd", textBox2.Text.ToString());
-                        command.Parameters.AddWithValue("tod", textBox1.Text.ToString());
+                        if (comboBox1.SelectedIndex == 0)
+                            command.Parameters.AddWithValue("tod", textBox1.Text.ToString());
+                        else
+                        {
+                            string htmlCode = "";
+                            using (WebClient client = new WebClient())
+                            {
+                                 htmlCode = client.DownloadString(textBox1.Text.ToString());
+                            }
+                            command.Parameters.AddWithValue("tod", htmlCode);
+                        }
                         command.Parameters.AddWithValue("tadd", DateTime.Now);
                         command.ExecuteNonQuery();
                     }///добавляем запрос на анализ
@@ -123,6 +171,7 @@ namespace ClientForCS
             {
                 MessageBox.Show(ex.Message);
             }
+            LoadDisplines();
         }
 
         //схожесть с исходным
@@ -149,19 +198,36 @@ namespace ClientForCS
                         " FROM ((public.output_usefull INNER JOIN public.cs_rawdata " +
                         " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
                         "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
-                        "ON discipline.id_disp=requests.id_disp", conn);
+                        "ON discipline.id_disp=requests.id_disp " +
+                        "WHERE discipline.name_disp= '"+comboBox2.SelectedItem.ToString()+"'", conn);
                     NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
 
-                    string answer = "";
-                    while(readerSel.Read())
+                    OutPutForm showForm = new OutPutForm();
+                    //string answer = "";
+
+                    showForm.dataGridView1.Columns.Add("columnUrl","Ссылка на сайт");
+                    showForm.dataGridView1.Columns.Add("columnPer", "% схожести");
+                    showForm.dataGridView1.Columns.Add("columnDisp", "Название дисциплины");
+                    showForm.dataGridView1.Rows.Clear();
+
+                    int counter = 0;
+                    while (readerSel.Read())
                     {
-                        answer += "Сайт :   "+ readerSel[2].ToString() + "  Процент схожести " + readerSel[0].ToString() + "%    c Д. :"+ readerSel[1].ToString() + "\n";
+                        showForm.dataGridView1.Rows.Add();
+
+                        showForm.dataGridView1.Rows[counter].Cells["columnUrl"].Value = readerSel[2].ToString();
+                        showForm.dataGridView1.Rows[counter].Cells["columnPer"].Value = readerSel[0].ToString();
+                        showForm.dataGridView1.Rows[counter].Cells["columnDisp"].Value = readerSel[1].ToString();
+                        //answer += "Сайт :   "+ readerSel[2].ToString() + "  Процент схожести " + readerSel[0].ToString() + "%    c Д. :"+ readerSel[1].ToString() + "\n";
+                        counter++;
 
                     }
-                    MessageBox.Show(answer);
+                    
+                    //MessageBox.Show(answer);
      
                     //Закрытие
                     conn.Close();
+                    showForm.ShowDialog();
                 }
 
             }
@@ -169,6 +235,7 @@ namespace ClientForCS
             {
                 MessageBox.Show(ex.Message);
             }
+            
         }
 
 
@@ -202,18 +269,34 @@ namespace ClientForCS
                         " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
                         "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
                         "ON discipline.id_disp=requests.id_disp " +
-                        "WHERE cs_rawdata.visit_count>=1 AND output_usefull.percentage>=10", conn);
+                        "WHERE cs_rawdata.visit_count>=1 AND output_usefull.percentage>=10 " +
+                        "and discipline.name_disp= '" + comboBox2.SelectedItem.ToString() + "'", conn);
                     NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
 
-                    string answer = "";
+                    OutPutForm showForm = new OutPutForm();
+                    //string answer = "";
+
+                    showForm.dataGridView1.Columns.Add("columnUrl", "Ссылка на сайт");
+                    showForm.dataGridView1.Columns.Add("columnPer", "% схожести");
+                    showForm.dataGridView1.Columns.Add("columnVis", "Кол-во посещений");
+                    showForm.dataGridView1.Rows.Clear();
+
+                    int counter = 0;
                     while (readerSel.Read())
                     {
-                       answer += "Популярный сайт : " +readerSel[0].ToString() + " c схожестью " + readerSel[1].ToString() + "% и посещаюмость " + readerSel[2].ToString() +"\n";
+                        showForm.dataGridView1.Rows.Add();
+
+                        showForm.dataGridView1.Rows[counter].Cells["columnUrl"].Value = readerSel[0].ToString();
+                        showForm.dataGridView1.Rows[counter].Cells["columnPer"].Value = readerSel[1].ToString();
+                        showForm.dataGridView1.Rows[counter].Cells["columnVis"].Value = readerSel[2].ToString();
+                        counter++;
+                        //answer += "Популярный сайт : " +readerSel[0].ToString() + " c схожестью " + readerSel[1].ToString() + "% и посещаюмость " + readerSel[2].ToString() +"\n";
                     }
-                    MessageBox.Show(answer);
+                    //MessageBox.Show(answer);
 
                     //Закрытие
                     conn.Close();
+                    showForm.ShowDialog();
                 }
 
             }

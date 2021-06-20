@@ -102,11 +102,6 @@ def themeModeling():
     
     top_tokens = model.score_tracker['top_tokens_score']
 
-    #for topic_name in model.topic_names:
-    #    print (topic_name)
-    #    for (token, weight) in zip(top_tokens.last_tokens[topic_name],
-    #                               top_tokens.last_weights[topic_name]):    
-    #         print (token, '-', round(weight,3))
 
     checkwithOriginal(top_tokens,model)
     #############################################
@@ -121,7 +116,8 @@ def checkwithOriginal(top_tokens,model):
     # пока исходный документ последний
     global id_of_css
 
-    for i in range(1,len(model.topic_names)-1):
+    #for i in range(1,len(model.topic_names)-1):
+    for i in range(0,len(model.topic_names)):
         counter=0
         for (token, weight) in zip(top_tokens.last_tokens[model.topic_names[i]],
                                    top_tokens.last_weights[model.topic_names[i]]):    
@@ -137,8 +133,6 @@ def checkwithOriginal(top_tokens,model):
         conn.commit()
         cursor.close()
         conn.close()
-        #print("coincidence for ",model.topic_names[i]," is ", counter/10*100, "%")
-        #usefullSites.append(counter)
     #################################################################
 
 
