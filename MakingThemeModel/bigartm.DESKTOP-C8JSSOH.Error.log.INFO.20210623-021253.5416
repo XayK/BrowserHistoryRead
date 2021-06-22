@@ -1,0 +1,38 @@
+Log file created at: 2021/06/23 02:12:53
+Running on machine: DESKTOP-C8JSSOH
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0623 02:12:53.467538 21356 c_interface.cc:127] Logging enabled to .
+I0623 02:12:53.468205 21356 c_interface.cc:271] Creating MasterModel (id=1)...
+I0623 02:12:53.472206 21356 collection_parser.cc:557] CollectionParserConfig.num_threads is automatically set to 16
+I0623 02:12:53.475541 21356 c_interface.cc:372] Pass 3821d324-f958-46bd-95ff-8761b41439f4 to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 02:12:53.475541 21356 c_interface.cc:386] Pass GatherDictionaryArgs: dictionary_target_name=3821d324-f958-46bd-95ff-8761b41439f4, data_path=modelsOfBA, symmetric_cooc_values=0 to void (__cdecl artm::core::MasterComponent::*)(class artm::GatherDictionaryArgs const & __ptr64) __ptr64
+I0623 02:12:53.475541 21356 dictionary_operations.cc:249] Found 0 batches in 'modelsOfBA' folder
+I0623 02:12:53.475541 21356 dictionary_operations.cc:313] Find 0 unique tokens in 0 items
+I0623 02:12:56.404245 21356 c_interface.cc:271] Creating MasterModel (id=2)...
+I0623 02:12:56.404245 21356 c_interface.cc:372] Pass 83a33bb3-672f-49cc-8243-421c0a85a943 to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 02:12:56.404245 21356 c_interface.cc:386] Pass GatherDictionaryArgs: dictionary_target_name=83a33bb3-672f-49cc-8243-421c0a85a943, data_path=modelsOfBA, symmetric_cooc_values=0 to void (__cdecl artm::core::MasterComponent::*)(class artm::GatherDictionaryArgs const & __ptr64) __ptr64
+I0623 02:12:56.404245 21356 dictionary_operations.cc:249] Found 0 batches in 'modelsOfBA' folder
+I0623 02:12:56.404245 21356 dictionary_operations.cc:313] Find 0 unique tokens in 0 items
+I0623 02:12:57.146242 21356 instance.cc:401] MasterModelConfig.processors_count is automatically set to 16
+I0623 02:12:57.146242 12456 processor.cc:701] Processor thread started
+I0623 02:12:57.146242  7024 processor.cc:701] Processor thread started
+I0623 02:12:57.146908  2720 processor.cc:701] Processor thread started
+I0623 02:12:57.146908  7828 processor.cc:701] Processor thread started
+I0623 02:12:57.146908 21356 c_interface.cc:271] Creating MasterModel (id=3)...
+I0623 02:12:57.146908 11036 processor.cc:701] Processor thread started
+I0623 02:12:57.146908  9504 processor.cc:701] Processor thread started
+I0623 02:12:57.146908 11416 processor.cc:701] Processor thread started
+I0623 02:12:57.146908 19804 processor.cc:701] Processor thread started
+I0623 02:12:57.146908 18492 processor.cc:701] Processor thread started
+I0623 02:12:57.146908  9616 processor.cc:701] Processor thread started
+I0623 02:12:57.146908 21356 c_interface.cc:386] Pass MasterModelConfig: topic_name_size=1, score_config_size=2, num_processors=0, pwt_name=pwt, nwt_name=nwt, num_document_passes=10, reuse_theta=no, cache_theta=no, opt_for_avx=yes, disk_cache_path to void (__cdecl artm::core::MasterComponent::*)(class artm::MasterModelConfig const & __ptr64) __ptr64
+I0623 02:12:57.146908 21356 instance.cc:401] MasterModelConfig.processors_count is automatically set to 16
+I0623 02:12:57.146908 19196 processor.cc:701] Processor thread started
+I0623 02:12:57.146908 19928 processor.cc:701] Processor thread started
+I0623 02:12:57.147576 11928 processor.cc:701] Processor thread started
+I0623 02:12:57.147576 14284 processor.cc:701] Processor thread started
+I0623 02:12:57.147576 21356 c_interface.cc:372] Pass pwt to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 02:12:57.147576 10088 processor.cc:701] Processor thread started
+I0623 02:12:57.147576 21356 c_interface.cc:372] Pass nwt to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 02:12:57.147576 19816 processor.cc:701] Processor thread started
+I0623 02:12:57.147576 21356 c_interface.cc:386] Pass InitializeModelArgs: model_name=pwt, dictionary_name=83a33bb3-672f-49cc-8243-421c0a85a943, topi

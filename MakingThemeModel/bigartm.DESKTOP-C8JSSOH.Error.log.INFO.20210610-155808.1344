@@ -1,9 +1,0 @@
-Log file created at: 2021/06/10 15:58:08
-Running on machine: DESKTOP-C8JSSOH
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-I0610 15:58:08.279778 12412 c_interface.cc:127] Logging enabled to .
-I0610 15:58:08.279778 12412 c_interface.cc:271] Creating MasterModel (id=1)...
-I0610 15:58:08.281780 12412 collection_parser.cc:557] CollectionParserConfig.num_threads is automatically set to 16
-E0610 15:58:08.284773 12412 c_interface.cc:59] InvalidOperation :  Error in datas.txt:0, can not parse integer number of occurences: мобильный:2\n|text
-I0610 15:58:12.459322 12412 c_interface.cc:372] Pass f20b1291-93a1-4769-a87a-37f40c709134 to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
-I0610 15:58:12.460325 12412 c_interface.cc:336] Disposing MasterComponent (id=1)...

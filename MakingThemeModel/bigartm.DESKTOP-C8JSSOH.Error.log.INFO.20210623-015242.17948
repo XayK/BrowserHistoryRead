@@ -1,0 +1,180 @@
+Log file created at: 2021/06/23 01:52:42
+Running on machine: DESKTOP-C8JSSOH
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0623 01:52:42.874692 20948 c_interface.cc:127] Logging enabled to .
+I0623 01:52:42.875358 20948 c_interface.cc:271] Creating MasterModel (id=1)...
+I0623 01:52:42.877360 20948 collection_parser.cc:557] CollectionParserConfig.num_threads is automatically set to 16
+W0623 01:52:42.880028 21488 helpers.cc:221] File already exists: modelsOfBAORIG\aaaaaa.batch
+I0623 01:52:42.883361 20948 c_interface.cc:372] Pass d959f4e0-524e-496f-814b-c4d0f1e8c97f to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 01:52:42.883361 20948 c_interface.cc:386] Pass GatherDictionaryArgs: dictionary_target_name=d959f4e0-524e-496f-814b-c4d0f1e8c97f, data_path=modelsOfBAORIG, symmetric_cooc_values=0 to void (__cdecl artm::core::MasterComponent::*)(class artm::GatherDictionaryArgs const & __ptr64) __ptr64
+I0623 01:52:42.883361 20948 dictionary_operations.cc:249] Found 1 batches in 'modelsOfBAORIG' folder
+I0623 01:52:42.890697 20948 dictionary_operations.cc:313] Find 248 unique tokens in 1 items
+I0623 01:52:42.892696 20948 c_interface.cc:271] Creating MasterModel (id=2)...
+I0623 01:52:42.892696 20948 c_interface.cc:372] Pass 186f1b47-38ba-4662-9a7a-d0290b5b8c28 to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 01:52:42.892696 20948 c_interface.cc:386] Pass GatherDictionaryArgs: dictionary_target_name=186f1b47-38ba-4662-9a7a-d0290b5b8c28, data_path=modelsOfBAORIG, symmetric_cooc_values=0 to void (__cdecl artm::core::MasterComponent::*)(class artm::GatherDictionaryArgs const & __ptr64) __ptr64
+I0623 01:52:42.893363 20948 dictionary_operations.cc:249] Found 1 batches in 'modelsOfBAORIG' folder
+I0623 01:52:42.893363 20948 dictionary_operations.cc:313] Find 248 unique tokens in 1 items
+I0623 01:52:42.902699 20948 instance.cc:401] MasterModelConfig.processors_count is automatically set to 16
+I0623 01:52:42.902699 17960 processor.cc:701] Processor thread started
+I0623 01:52:42.902699 16896 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 11224 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 20148 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 20436 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 20948 c_interface.cc:271] Creating MasterModel (id=3)...
+I0623 01:52:42.903367  5616 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 16056 processor.cc:701] Processor thread started
+I0623 01:52:42.903367  4776 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 16256 processor.cc:701] Processor thread started
+I0623 01:52:42.903367  8996 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 11988 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 20008 processor.cc:701] Processor thread started
+I0623 01:52:42.903367 20948 c_interface.cc:386] Pass MasterModelConfig: topic_name_size=1, score_config_size=2, num_processors=0, pwt_name=pwt, nwt_name=nwt, num_document_passes=10, reuse_theta=no, cache_theta=no, opt_for_avx=yes, disk_cache_path to void (__cdecl artm::core::MasterComponent::*)(class artm::MasterModelConfig const & __ptr64) __ptr64
+I0623 01:52:42.903367 20948 instance.cc:401] MasterModelConfig.processors_count is automatically set to 16
+I0623 01:52:42.904033  1936 processor.cc:701] Processor thread started
+I0623 01:52:42.904033 20892 processor.cc:701] Processor thread started
+I0623 01:52:42.904033  8668 processor.cc:701] Processor thread started
+I0623 01:52:42.904033  8548 processor.cc:701] Processor thread started
+I0623 01:52:42.904033 20948 c_interface.cc:372] Pass pwt to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 01:52:42.904033 20948 c_interface.cc:372] Pass nwt to void (__cdecl artm::core::MasterComponent::*)(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const & __ptr64) __ptr64
+I0623 01:52:42.904033 20948 c_interface.cc:386] Pass InitializeModelArgs: model_name=pwt, dictionary_name=186f1b47-38ba-4662-9a7a-d0290b5b8c28, topic_name_size=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::InitializeModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.906033 20948 master_component.cc:620] InitializeModel() created matrix pwt with 1 topics and 248 tokens; 
+I0623 01:52:42.906033 20948 c_interface.cc:386] Pass InitializeModelArgs: model_name=nwt, dictionary_name=186f1b47-38ba-4662-9a7a-d0290b5b8c28, topic_name_size=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::InitializeModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.907366 20948 master_component.cc:620] InitializeModel() created matrix nwt with 1 topics and 248 tokens; 
+I0623 01:52:42.907366 20948 phi_matrix_operations.cc:84] RetrieveExternalTopicModel() with 1 topics, 248 tokens
+I0623 01:52:42.908033 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 9343 bytes...
+I0623 01:52:42.911368 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.911368 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.912035 11812 master_component.cc:772] Batches count (=1) is smaller than num processors (=16), which may cause suboptimal performance.
+I0623 01:52:42.913368 16896 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.914038 16896 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.914038 16896 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.915370 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.915370 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.915370 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.916036 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.916036 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.916704 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.916704 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.918036 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.918036 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.919370 16896 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.920037 16896 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.920037 16896 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.921370 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.921370 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.922037 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.922037 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.922037 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.922704 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.922704 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.923372 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.923372 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.925371  5616 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.925371  5616 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.926039  5616 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.927371 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.927371 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.928040 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.928040 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.928040 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.928706 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.928706 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.929373 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.929373 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.930706 17960 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.930706  8668 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.931372  8668 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.931372  8668 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.934041 20148 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.934041  1936 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 20892 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.934041 20436 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 16056 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041  4776 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 20008 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 11224 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041  8548 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041  8996 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 16256 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934041 11988 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.934707 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.934707 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.934707 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.935374 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.935374 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.936040 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.936040 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.938041  8668 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.938710  8668 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.938710  8668 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.939375 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.939375 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.940042 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.940042 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.940042 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.940042 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.940042 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.941375 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.941375 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.942709  8668 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.943375  8668 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.943375  8668 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.945376 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.945376 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.945376 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.946043 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.946043 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.946043 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.946043 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.946710 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.946710 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.949378  5616 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.950044  5616 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.950044  5616 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.950711 16896 processor.cc:717] No data in processing queue, waiting...
+I0623 01:52:42.950711 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.950711 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.950711 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.951378 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.951378 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.951378 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.951378 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.952713 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.952713 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.954046  5616 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.954046  5616 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.954712  5616 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.955379 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.955379 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.955379 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.956046 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.956046 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.956046 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.956046 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.956712 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.956712 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.958714  4776 processor.cc:724] Processing queue has data, processing started
+I0623 01:52:42.958714  4776 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.958714  4776 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.959380  4776 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.959380 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.959380 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.959380 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.960047 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.960047 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.960047 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsProcessedScore^^^ to MasterComponent::Request
+I0623 01:52:42.960047 20948 c_interface.cc:230] ArtmCopyRequestedMessage is copying 45 bytes...
+I0623 01:52:42.960713 11812 c_interface.cc:386] Pass FitOfflineMasterModelArgs, batch_filename_size=1, batch_weight_size=1, num_collection_passes=1 to void (__cdecl artm::core::MasterComponent::*)(class artm::FitOfflineMasterModelArgs const & __ptr64) __ptr64
+I0623 01:52:42.960713 11812 master_component.cc:1340] ProcessBatchesArgs: nwt_target_name=nwt, batch_filename_size=1, batch_size=0, batch_weight_size=1, pwt_source_name=pwt, num_document_passes=10, reuse_theta=no, opt_for_avx=yes, predict_class_id=
+I0623 01:52:42.963380 11988 processor.cc:724] Processing queue has data, processing started
+I0623 01:52:42.963380 11988 processor.cc:802] Processor: start processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.963380 11988 processor.cc:898] Processor: complete processing batch 3b784810-5c7d-43f3-8912-da1a1ac17097 into model nwt
+I0623 01:52:42.963380 11988 cuckoo_watch.h:45] 0ms in ProcessBatch(modelsOfBAORIG\aaaaaa.batch) [including 0ms in LoadMessage; 0ms in InitializeSparseNdw; 0ms in InferThetaAndUpdateNwtSparse; 0ms in CalculateScore(^^^ItemsProcessedScore^^^); ]
+I0623 01:52:42.965381 11812 master_component.cc:1391] NormalizeModelArgs: pwt_target_name=pwt, nwt_source_name=nwt, rwt_source_name=
+I0623 01:52:42.965381 11812 master_component.cc:952] MasterComponent: start normalizing model nwt
+I0623 01:52:42.965381 11812 master_component.cc:980] MasterComponent: complete normalizing model nwt
+I0623 01:52:42.966049 11812 master_component.cc:1415] DisposeModel rwt
+I0623 01:52:42.966049 11812 master_component.cc:1005] FitOffline: ItemsProcessed, num_items=1, num_batches=1, token_weight=1156, token_weight_in_effect=1156
+I0623 01:52:42.966049 20948 c_interface.cc:559] Pass GetScoreValueArgs, score_name=^^^ItemsP

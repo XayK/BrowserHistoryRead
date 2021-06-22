@@ -1,0 +1,19 @@
+Log file created at: 2021/06/23 02:27:07
+Running on machine: DESKTOP-C8JSSOH
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W0623 02:27:07.748775 15756 helpers.cc:221] File already exists: modelsOfBAORIG\aaaaaa.batch
+W0623 02:27:07.835688 15756 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:07.949800 15756 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:08.095677 15756 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:08.318401 16372 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:08.556774 16372 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:08.713618  7528 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:08.870322  7528 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:08.998354  7528 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:09.155726  7528 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:09.287091 15692 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:09.393783 15692 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:09.519814 15692 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:09.640511 15692 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:09.774542 18764 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 02:27:11.198223 18764 helpers.cc:221] File already exists: modelsOfBAORIG\aaaaaa.batch

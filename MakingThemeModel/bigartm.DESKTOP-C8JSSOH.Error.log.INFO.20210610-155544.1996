@@ -1,7 +1,0 @@
-Log file created at: 2021/06/10 15:55:44
-Running on machine: DESKTOP-C8JSSOH
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-I0610 15:55:44.354101 14252 c_interface.cc:127] Logging enabled to .
-I0610 15:55:44.354101 14252 c_interface.cc:271] Creating MasterModel (id=1)...
-I0610 15:55:44.356103 14252 collection_parser.cc:557] CollectionParserConfig.num_threads is automatically set to 16
-E0610 15:55:44.359097 14252 c_interface.cc:59] InvalidOperation :  Error in datas.txt:0, can not parse integer number of occurences: мобильный:2\n|text

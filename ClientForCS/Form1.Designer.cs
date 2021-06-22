@@ -159,6 +159,7 @@ namespace ClientForCS
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1394,7 +1395,7 @@ namespace ClientForCS
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(446, 11);
+            this.label1.Location = new System.Drawing.Point(374, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(129, 13);
             this.label1.TabIndex = 2;
@@ -1402,9 +1403,9 @@ namespace ClientForCS
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(595, 6);
+            this.button1.Location = new System.Drawing.Point(509, 7);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 23);
+            this.button1.Size = new System.Drawing.Size(198, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "Отправить запрос на анализ";
             this.button1.UseVisualStyleBackColor = true;
@@ -1432,7 +1433,7 @@ namespace ClientForCS
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(225, 6);
+            this.textBox2.Location = new System.Drawing.Point(144, 6);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(215, 22);
@@ -1441,7 +1442,7 @@ namespace ClientForCS
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(97, 11);
+            this.label16.Location = new System.Drawing.Point(16, 11);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(122, 13);
             this.label16.TabIndex = 7;
@@ -1452,7 +1453,7 @@ namespace ClientForCS
             this.groupBox3.Controls.Add(this.comboBox2);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Location = new System.Drawing.Point(768, 120);
+            this.groupBox3.Location = new System.Drawing.Point(727, 138);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(200, 210);
             this.groupBox3.TabIndex = 8;
@@ -1468,11 +1469,22 @@ namespace ClientForCS
             this.comboBox2.Size = new System.Drawing.Size(121, 21);
             this.comboBox2.TabIndex = 7;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(727, 7);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(117, 51);
+            this.button2.TabIndex = 9;
+            this.button2.Text = "Загрузить цифровые следы в БД";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 456);
+            this.ClientSize = new System.Drawing.Size(953, 454);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.textBox2);
@@ -1625,6 +1637,7 @@ namespace ClientForCS
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Button button2;
     }
 }
 

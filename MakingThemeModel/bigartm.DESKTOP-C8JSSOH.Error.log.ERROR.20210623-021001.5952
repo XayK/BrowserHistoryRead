@@ -1,0 +1,4 @@
+Log file created at: 2021/06/23 02:10:01
+Running on machine: DESKTOP-C8JSSOH
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+E0623 02:10:01.550889  5368 c_interface.cc:59] InvalidOperation :  Dictionary 'f09bfd10-e336-4130-8458-8c59b1b23590' has no entries

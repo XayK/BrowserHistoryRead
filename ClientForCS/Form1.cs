@@ -1,13 +1,7 @@
 ﻿using Npgsql;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Diagnostics;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClientForCS
@@ -43,8 +37,8 @@ namespace ClientForCS
                     conn.Open();
                     var SELcommand = new NpgsqlCommand("Select name_disp FROM public.discipline ", conn);
                     NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
-
-                    if (readerSel.Read())
+                    comboBox2.Items.Clear();
+                    while (readerSel.Read())
                     {
                         comboBox2.Items.Add(readerSel[0].ToString());
                     }
@@ -57,16 +51,17 @@ namespace ClientForCS
             {
                 MessageBox.Show(ex.Message);
             }
-            comboBox2.SelectedIndex=0;
+            if(comboBox2.Items.Count>0)
+                comboBox2.SelectedIndex=0;
         }
         private void button1_Click(object sender, EventArgs e)
         {
             string original = textBox1.Text;
             
-
             ///Запись данных в БД
             try
             {
+                
                 string Host = "192.168.56.129";
                 string User = "postgres";
                 string DBname = "db_urls";
@@ -172,6 +167,21 @@ namespace ClientForCS
                 MessageBox.Show(ex.Message);
             }
             LoadDisplines();
+
+            /////////////////////
+            {
+
+                MessageBox.Show("Подождите, пока работает алгоритм построения моделей");
+                string fileName = @"C:\Users\Error\source\repos\BrowserHistoryRead\MakingThemeModel\MakingThemeModel.py";
+
+                Process p = new Process();
+                p.StartInfo = new ProcessStartInfo(@"C:\Users\Error\AppData\Local\Programs\Python\Python36\python.exe", fileName);
+                p.Start();
+
+
+                p.WaitForExit();
+            }
+            //////////////////////////////////
         }
 
         //схожесть с исходным
@@ -194,12 +204,19 @@ namespace ClientForCS
                 {
                     //открытие соединения
                     conn.Open();
+                    
                     var SELcommand = new NpgsqlCommand("SELECT output_usefull.percentage, discipline.name_disp, cs_rawdata.url" +
                         " FROM ((public.output_usefull INNER JOIN public.cs_rawdata " +
                         " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
                         "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
                         "ON discipline.id_disp=requests.id_disp " +
                         "WHERE discipline.name_disp= '"+comboBox2.SelectedItem.ToString()+"'", conn);
+                    if( comboBox2.SelectedItem.ToString()=="")
+                        SELcommand = new NpgsqlCommand("SELECT output_usefull.percentage, discipline.name_disp, cs_rawdata.url" +
+                        " FROM ((public.output_usefull INNER JOIN public.cs_rawdata " +
+                        " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
+                        "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
+                        "ON discipline.id_disp=requests.id_disp", conn);
                     NpgsqlDataReader readerSel = SELcommand.ExecuteReader();
 
                     OutPutForm showForm = new OutPutForm();
@@ -265,6 +282,14 @@ namespace ClientForCS
                     //    "ON output_usefull.id_cs=cs_rawdata.id " +
                     //    "WHERE cs_rawdata.visit_count>=1 AND output_usefull.percentage>10;", conn);//полпуряные и посещяемые сайты
                     var SELcommand = new NpgsqlCommand("SELECT cs_rawdata.url, output_usefull.percentage, cs_rawdata.visit_count" +
+                        " FROM ((public.output_usefull INNER JOIN public.cs_rawdata " +
+                        " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
+                        "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
+                        "ON discipline.id_disp=requests.id_disp " +
+                        "WHERE cs_rawdata.visit_count>=1 AND output_usefull.percentage>=10 " +
+                        "and discipline.name_disp= '" + comboBox2.SelectedItem.ToString() + "'", conn);
+                    if (comboBox2.SelectedItem.ToString() == "")
+                        SELcommand = new NpgsqlCommand("SELECT cs_rawdata.url, output_usefull.percentage, cs_rawdata.visit_count" +
                         " FROM ((public.output_usefull INNER JOIN public.cs_rawdata " +
                         " ON output_usefull.id_cs=cs_rawdata.id) INNER JOIN public.requests " +
                         "ON output_usefull.id_req=requests.id_of_req) INNER JOIN public.discipline " +
@@ -438,6 +463,24 @@ namespace ClientForCS
             CB_N_2_D_6_P_5.Checked = !CB_N_2_D_6_P_5.Checked;
             CB_N_2_D_6_P_6.Checked = !CB_N_2_D_6_P_6.Checked;
             CB_N_2_D_6_P_7.Checked = !CB_N_2_D_6_P_7.Checked;
+        }
+
+        //загрузка в БД предпроцесс
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Подождите пока идет предобработка!");
+            string fileName = @"C:\Users\Error\source\repos\BrowserHistoryRead\PreprocessingText\main.py";
+
+            Process p = new Process();
+            p.StartInfo = new ProcessStartInfo(@"C:\Users\Error\AppData\Local\Programs\Python\Python36\python.exe", fileName);
+            p.Start();
+
+            //string output = p.StandardOutput.ReadToEnd();
+
+            
+            
+            p.WaitForExit();
+            //MessageBox.Show(output);
         }
     }
 }

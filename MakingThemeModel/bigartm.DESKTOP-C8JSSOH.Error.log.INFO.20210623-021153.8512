@@ -1,0 +1,4 @@
+Log file created at: 2021/06/23 02:11:53
+Running on machine: DESKTOP-C8JSSOH
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I0623 02:11:53.049784 19556 c_interface.cc:127] Logging enabled to .

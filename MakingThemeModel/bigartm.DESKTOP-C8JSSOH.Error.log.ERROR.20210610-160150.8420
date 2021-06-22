@@ -1,4 +1,0 @@
-Log file created at: 2021/06/10 16:01:50
-Running on machine: DESKTOP-C8JSSOH
-Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
-E0610 16:01:50.280441  5904 c_interface.cc:59] InvalidOperation :  Error in datas.txt:0, can not parse integer number of occurences: мобильный:2\n|text

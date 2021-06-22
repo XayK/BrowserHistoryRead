@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using NLog;
+using System.Diagnostics;
 
 namespace ServiceForHistoryRead
 {
@@ -14,14 +15,21 @@ namespace ServiceForHistoryRead
         //static List<string> titlesList;
         static List<int> visitCountList;
         static List<DateTime> visitTimeList;
-        private static Logger logger;
+        static EventLog logger;
+
         public static void DoReading()
         {
-            logger = LogManager.GetCurrentClassLogger();
+            logger = new EventLog();
+            ////////////////////
+            logger.Source = "Reader of History";
+            logger.Log = "HService";
+            logger.WriteEntry("Started reading sequince.", EventLogEntryType.Information);
+
             LoadHistory();
             SaveToDatabase();
 
-            string path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy";
+            //string path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy";
+            string path = @"C:\Users\Error\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy";
             FileInfo fileInf = new FileInfo(path);
             if (fileInf.Exists)
             {
@@ -31,6 +39,8 @@ namespace ServiceForHistoryRead
                 }
                 catch { }
             }
+
+            logger.WriteEntry("Ended reading sequince.", EventLogEntryType.Information);
 
         }
 
@@ -45,22 +55,25 @@ namespace ServiceForHistoryRead
                 visitTimeList = new List<DateTime>();
 
                 ///////////
-                string path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\HistoryCopy";
+                //string path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\HistoryCopy";
+                string path = @"C:\Users\Error\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy";
                 FileInfo fileInf = new FileInfo(path);
                 if (fileInf.Exists)
                 {
                     fileInf.Delete();
                 }
                 //удаляем копию и копируем новую базу для работы
-                path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\AppData\Local\Google\Chrome\User Data\Default\History";
-                //string newPath = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy";
-                string newPath = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\HistoryCopy";
+                //path = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\AppData\Local\Google\Chrome\User Data\Default\History";
+                path = @"C:\Users\Error\AppData\Local\Google\Chrome\User Data\Default\History";
+
+                //string newPath = Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\HistoryCopy";
+                string newPath = @"C:\Users\Error\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy";
                 fileInf = new FileInfo(path);
                 fileInf.CopyTo(newPath, true);
                 ////////
 
-                //   using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source= "+ System.Environment.SpecialFolder.UserProfile +@"\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy; Version=3;"))
-                using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source= " + Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile) + @"\HistoryCopy; Version=3;"))
+                
+                using (SQLiteConnection Connect = new SQLiteConnection(@"Data Source= C:\Users\Error\AppData\Local\Google\Chrome\User Data\Default\HistoryCopy; Version=3;"))
                 {
                     Connect.Open();
 
@@ -70,44 +83,44 @@ namespace ServiceForHistoryRead
                     var Command = new SQLiteCommand
                     {
                         Connection = Connect,
+                        //CommandText = "SELECT * FROM [urls] " +
+                        //                "WHERE [hidden]==0 AND [last_visit_time]>=1000*" + span.TotalMilliseconds.ToString()
                         CommandText = "SELECT * FROM [urls] " +
-                                        "WHERE [hidden]==0 AND [last_visit_time]>=1000*" + span.TotalMilliseconds.ToString()
+                                        "WHERE [hidden]==0 "
                     };
                     SQLiteDataReader sqlReader = Command.ExecuteReader();
                     string dbUrlSite = null;
                     //string dbTitleSite = null;
                     int dbVisitCount = 0;
-                    UInt64 dbVisitTime = 0;
+                    ulong dbVisitTime = 0;
                     while (sqlReader.Read())
                     {
                         dbUrlSite = (string)sqlReader["url"];
                         urlList.Add(dbUrlSite);
 
-                        //dbTitleSite = sqlReader["title"].ToString();
-                        //titlesList.Add(dbTitleSite);
-
                         dbVisitCount = int.Parse(sqlReader["visit_count"].ToString());
                         visitCountList.Add(dbVisitCount);
 
-                        dbVisitTime = UInt64.Parse(sqlReader["last_visit_time"].ToString());
+                        //1209600000000 - 14 дней   13254192000000000 - 4-1-21
+                        dbVisitTime = ulong.Parse(sqlReader["last_visit_time"].ToString());
+                        if (dbVisitTime != 0)
+                        {
+                            while (dbVisitTime > (long)13254192000000000)
+                                dbVisitTime -= (long)1209600000000;
+                            dbVisitTime += (long)1209600000000;
+                        }
+                        else dbVisitTime = (long)13254228000000000;
                         epoch = DateTime.FromFileTime((long)dbVisitTime * 10);
-                        //epoch = new DateTime(1970, 1, 1, 0, 0, 0, 0);
-                        //epoch.AddMilliseconds((dbVisitTime / 1000000) - 11644473600);
                         visitTimeList.Add(epoch);
-                        //visitTimeList.Add(new DateTime(2000, 1, 1, (int)((dbVisitTime / 3600) % 24), (int)((dbVisitTime / 60) % 60), (int)(dbVisitTime % 60)));
                     }
                     Connect.Close();
 
                 }
 
-                //Console.WriteLine("GOOD");
             }
             catch (Exception ex)
             {
-
-                logger.Debug(ex.ToString());
-                //Console.WriteLine("Ошибка в открытии файла истории данных {0}", ex.ToString());
-                //Console.ReadKey();
+                logger.WriteEntry(ex.ToString(), EventLogEntryType.Error);
             }
         }
         private static void SaveToDatabase()
@@ -115,32 +128,23 @@ namespace ServiceForHistoryRead
             ///Запись данных в БД
             try
             {
-                string Host = "192.168.56.129";
-                string User = "postgres";
-                string DBname = "db_urls";
-                string Password = "password";
-                string Port = "5432";
-                string connString =
-                String.Format(
-                       "Server={0};User ID={1};Database={2};Port={3};Password={4};SSLMode=Prefer",
-                       Host, User, DBname, Port, Password);
+                string connString = "Server=192.168.56.129;User ID=postgres;Database=db_urls;Port=5432;Password=password;SSLMode=Prefer";
                 /////////////////////////////
                 using (var conn = new NpgsqlConnection(connString))
                 {
                     //открытие соединения
                     conn.Open();
+                    logger.WriteEntry(urlList.Count.ToString()+" к записи в БД", EventLogEntryType.Warning);
                     for (int i = 0; i < urlList.Count; i++)
                     {
+                        //logger.WriteEntry("Записана одна строка", EventLogEntryType.Warning);
                         using (var command = new NpgsqlCommand("INSERT INTO public.cs_rawData (url, visit_count, last_visit_time, aud) VALUES (@u1, @vc1, @lvt1, @a1)", conn))
                         {
                             command.Parameters.AddWithValue("u1", urlList[i]);
-                            //command.Parameters.AddWithValue("t1", titlesList[i]);
                             command.Parameters.AddWithValue("vc1", visitCountList[i]);
                             command.Parameters.AddWithValue("lvt1", visitTimeList[i]);
                             command.Parameters.AddWithValue("a1", Environment.MachineName.ToString());
 
-                            //int nRows = command.ExecuteNonQuery();//Выполенние команды ввода
-                            //Console.Out.WriteLine(String.Format("Number of rows inserted={0}", nRows));
                             command.ExecuteNonQuery();
                         }
 
@@ -152,7 +156,7 @@ namespace ServiceForHistoryRead
             }
             catch (Exception ex)
             {
-                logger.Debug(ex.ToString());
+                logger.WriteEntry(ex.ToString(), EventLogEntryType.Error);
                 //Console.WriteLine("Ошибка в отправке данных в БД {0}", ex.ToString());
                 //Console.ReadKey();
             }

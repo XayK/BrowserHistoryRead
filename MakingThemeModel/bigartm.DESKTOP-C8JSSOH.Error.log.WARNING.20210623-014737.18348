@@ -1,0 +1,10 @@
+Log file created at: 2021/06/23 01:47:37
+Running on machine: DESKTOP-C8JSSOH
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+W0623 01:47:37.728616  6848 helpers.cc:221] File already exists: modelsOfBAORIG\aaaaaa.batch
+W0623 01:47:37.810636  3444 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 01:47:44.220515  3444 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 01:47:45.645499  3444 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 01:47:46.595487  3444 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 01:47:47.390846  3444 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
+W0623 01:47:48.101547 18580 helpers.cc:221] File already exists: modelsOfBA\aaaaaa.batch
